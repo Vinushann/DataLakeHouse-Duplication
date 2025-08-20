@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<configuration>
+  <!-- point metastore to Postgres -->
+  <property>
+    <name>javax.jdo.option.ConnectionURL</name>
+    <value>jdbc:postgresql://metastore-db:5432/metastore</value>
+  </property>
+  <property>
+    <name>javax.jdo.option.ConnectionDriverName</name>
+    <value>org.postgresql.Driver</value>
+  </property>
+  <property>
+    <name>javax.jdo.option.ConnectionUserName</name>
+    <value>hive</value>
+  </property>
+  <property>
+    <name>javax.jdo.option.ConnectionPassword</name>
+    <value>hivepw</value>
+  </property>
+
+  <!-- service + paths -->
+  <property>
+    <name>hive.metastore.uris</name>
+    <value>thrift://0.0.0.0:9083</value>
+  </property>
+  <property>
+    <name>hive.metastore.warehouse.dir</name>
+    <value>/lakehouse/warehouse</value>
+  </property>
+
+  <!-- avoid Tez/CLI -->
+  <property>
+    <name>hive.execution.engine</name>
+    <value>mr</value>
+  </property>
+</configuration>
